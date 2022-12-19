@@ -1,4 +1,5 @@
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
+import { notification } from 'antd'
 import { getEnv } from "@config/env.config"
 import { storage } from '@utils/index'
 
@@ -26,6 +27,16 @@ const onResponse = (response: AxiosResponse): AxiosResponse => {
 
 const onResponseError = (error: AxiosError): Promise<AxiosError> => {
   console.log('Response Error:', Object.keys(error))
+
+  console.log(error.code)
+  if (error.code === 'ERR_NETWORK') {
+    notification.error({
+      duration: 5,
+      message: 'Network Error',
+      description: 'Failed to connect to server'
+    })
+  }
+
   return Promise.reject(error)
 }
 

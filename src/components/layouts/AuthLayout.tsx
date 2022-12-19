@@ -1,15 +1,23 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Layout, Card } from 'antd'
 import { CopyrightOutlined } from '@ant-design/icons'
 
 import BRAND_LOGO from '@assets/brand/brand-logo.png'
 import IMG_LEFT from '@assets/svg/auth-left-svg.svg'
 import IMG_RIGHT from '@assets/svg/auth-right-svg.svg'
-import { getCurrentYear } from '@utils/datetime.utils'
+import { storage, getCurrentYear } from '@utils/index'
 
 const { Header, Content } = Layout
 
 export const AuthLayout: React.FC<{ children: React.ReactNode }> = (props) => {
+  const navigate = useNavigate()
+
+  React.useEffect(() => {
+    if (storage.get('accessToken') && storage.get('user')) {
+      navigate('/dashboard')
+    }
+  }, [])
   return (
     <Layout className="wrapper-auth h-100vh">
       <img src={IMG_LEFT} className="auth-svg left" />

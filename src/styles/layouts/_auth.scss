@@ -64,6 +64,10 @@
         font-size: 13px;
       }
 
+      button[type="submit"] {
+        background-color: #28258F !important;
+      }
+
       .ant-form {
         &-item-label {
           label {

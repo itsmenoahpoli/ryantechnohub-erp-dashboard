@@ -4,14 +4,15 @@
 import { RootPage } from '@pages/RootPage'
 
 /**
- * Dashboard Pages
- */
-import { HomePage } from '@pages/dashboard'
-
-/**
  * System | Auth | Error | Maintenance Pages
  */
 import { LoginPage } from '@pages/system'
+
+/**
+ * Module Pages
+ */
+import ACCOUNTINGS_ROUTES from './accountings-routes.router'
+import DASHBOARD_ROUTES from './dashboard-routes.router'
 
 const APP_ROUTES = [
   {
@@ -29,15 +30,7 @@ const APP_ROUTES = [
       },
       {
         path: '/dashboard',
-        meta: {
-          requiresAuth: true,
-        },
-        children: [
-          {
-            path: '',
-            element: <HomePage />,
-          },
-        ],
+        children: [...DASHBOARD_ROUTES, ...ACCOUNTINGS_ROUTES],
       },
     ],
   },

@@ -25,7 +25,7 @@ export const LoginPage: React.FC = () => {
       </Divider>
 
       <Button type="ghost" className="btn-extra mb-4" block>
-        Sign in using OTP
+        Sign-in using OTP
       </Button>
 
       <div className="text-center">

@@ -2,7 +2,41 @@
   height: 100vh;
 
   &-sidebar {
-    background-color: #1F1E37 !important;
+    background-color: #0D1520 !important;
+    padding-top: 30px;
+
+    .ant-divider {
+      border-color: #1a293d;
+      margin-bottom: 5px;
+
+      &-inner-text {
+        color: #FFFFFF;
+        font-size: 12px;
+      }
+    }
+
+    button {
+      background-color: transparent !important;
+      border: 0;
+      height: 40px;
+      font-size: 13px;
+      text-align: left;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+
+      svg {
+        height: 16px;
+        width: auto;
+        margin-right: 10px;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: rgba(255, 255, 255, 0.075) !important;
+      }
+    }
   }
 
   &-main {

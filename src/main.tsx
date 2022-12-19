@@ -5,8 +5,4 @@ import 'antd/dist/reset.css'
 import 'antd-css-utilities/utility.min.css'
 import '@styles/main.scss'
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(<App />)

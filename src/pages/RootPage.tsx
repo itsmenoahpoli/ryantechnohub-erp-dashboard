@@ -5,7 +5,7 @@ export const RootPage: React.FC = () => {
   const navigate = useNavigate()
 
   React.useEffect(() => {
-    // navigate('/dashboard/')
+    navigate('/dashboard/')
   }, [])
 
   return <Outlet />
