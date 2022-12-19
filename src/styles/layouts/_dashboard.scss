@@ -1,0 +1,23 @@
+.wrapper-dashboard {
+  height: 100vh;
+
+  &-sidebar {
+    background-color: #1F1E37 !important;
+  }
+
+  &-main {
+    height: 100%;
+
+    &-header {
+      //
+    }
+
+    &-content {
+      //
+    }
+
+    &-footer {
+      //
+    }
+  }
+}

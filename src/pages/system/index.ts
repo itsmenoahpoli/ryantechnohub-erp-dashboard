@@ -1,0 +1,1 @@
+export { LoginPage } from '@pages/system/auth/LoginPage'

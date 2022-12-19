@@ -1,0 +1,118 @@
+.wrapper-auth {
+  width: 100%;
+  position: relative;
+
+  header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    background-color: #FFFFFF !important;
+    border-bottom: solid 1px #EEEEEE;
+    height: 60px !important;
+    line-height: 55px !important;
+    align-items: center !important;
+
+    img {
+      height: auto;
+      width: 28px;
+      margin-right: 10px;
+    }
+
+    p {
+      color: #17415F;
+    }
+
+    img,
+    p {
+      display: inline;
+    }
+  }
+
+  main {
+    padding-top: 65px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    zoom: 0.95;
+
+    p.footer-label {
+      color: #777777;
+      font-size: 13px;
+    }
+
+    a {
+      color: #0D2153;
+      font-size: 13px;
+      text-decoration: underline;
+    }
+
+    .ant-card {
+      width: 350px;
+      margin-top: -25vh;
+
+      .title {
+        color: #233a5e;
+      }
+
+      .btn-extra {
+        height: 40px;
+        color: #234267;
+        background-color: #E0E4E8;
+        font-weight: 700;
+        font-size: 13px;
+      }
+
+      .ant-form {
+        &-item-label {
+          label {
+            font-size: 13px;
+            color: #565656;
+          }
+        }
+
+        &-item-control-input {
+          height: 40px;
+
+          &-content {
+            input {
+              background-color: #FAFBFB;
+              font-size: 13px;
+              height: 40px;
+            }
+
+            .ant-input-affix-wrapper {
+              background-color: #FAFBFB;
+              padding: 0 11px;
+            }
+          }
+        }
+
+        &-item-explain {
+          font-size: 12px;
+        }
+
+        button {
+          height: 40px;
+        }
+      }
+    }
+  }
+
+  img.auth-svg {
+    height: 260px;
+    width: 450px;
+    position: fixed !important;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  img.auth-svg.left {
+    left: 0 !important;
+  }
+
+  img.auth-svg.right {
+    right: 0 !important;
+  }
+}

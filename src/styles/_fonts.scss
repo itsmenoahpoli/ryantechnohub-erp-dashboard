@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'EuclidSquare';
+  src: url('@assets/fonts/EuclidSquare-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'EuclidSquare-Bold';
+  src: url('@assets/fonts/EuclidSquare-Bold.ttf');
+}
+
+* {
+  font-family: 'EuclidSquare' !important;
+}
+
+.fw-bold {
+  font-family: 'EuclidSquare-Bold' !important;
+}
