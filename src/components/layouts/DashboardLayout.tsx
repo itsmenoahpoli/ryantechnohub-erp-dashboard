@@ -1,10 +1,20 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Layout, Button, Divider } from 'antd'
-import { BsCalendar4Week } from 'react-icons/bs'
-import { AiOutlineFileText } from 'react-icons/ai'
-import { MdOutlineInventory, MdOutlinePlaylistAddCheck } from 'react-icons/md'
-import { TbTruckLoading } from 'react-icons/tb'
+import { Layout, Button, Divider, Avatar } from 'antd'
+import {
+  BsColumns,
+  BsFileBarGraph,
+  BsBell,
+  BsCalendar2Week,
+  BsListCheck,
+  BsReplyAll,
+  BsFileText,
+  BsFileEarmarkPdf,
+  BsPersonLinesFill,
+  BsFileRuled,
+  BsClockHistory,
+  BsHddStack,
+} from 'react-icons/bs'
 
 import { DEFAULT_META } from '@config/meta.config'
 import { storage } from '@utils/index'
@@ -23,18 +33,27 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = (props) 
   }, [])
 
   return (
-    <Layout className="wrapper-dashboard">
+    <Layout className="wrapper-dashboard" hasSider>
       <Sider className="wrapper-dashboard-sidebar" breakpoint="md" width={270}>
-        <div className="px-2">
+        <div className="wrapper-dashboard-sidebar-header px-2">
+          <Avatar size={48}>JD</Avatar>
+          <div>
+            <p>John Doe</p>
+            <small>ADMINISTRATOR</small>
+          </div>
+        </div>
+        <div className="wrapper-dashboard-sidebar-body px-2">
           <div className="mb-5">
             <Divider orientation="left" orientationMargin={10}>
               Data Monitoring
             </Divider>
             <Button type="ghost" block>
-              <MdOutlinePlaylistAddCheck /> Sales Monitoring
+              <BsColumns />
+              Sales Monitoring
             </Button>
             <Button type="ghost" block>
-              <MdOutlinePlaylistAddCheck /> Stocks Monitoring
+              <BsColumns />
+              Stocks Monitoring
             </Button>
           </div>
 
@@ -43,11 +62,12 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = (props) 
               Reports
             </Divider>
             <Button type="ghost" block>
-              <AiOutlineFileText /> Sales Reports
+              <BsFileBarGraph />
+              Sales Reports
             </Button>
             <Button type="ghost" block>
-              <MdOutlineInventory />
-              Inventory Reports (In/Out)
+              <BsFileBarGraph />
+              Inventory Reports
             </Button>
           </div>
 
@@ -56,14 +76,15 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = (props) 
               Accountings
             </Divider>
             <Button type="ghost" block>
-              <BsCalendar4Week /> Receivables Reminder
+              <BsBell />
+              Receivables Reminder
             </Button>
             <Button type="ghost" block>
-              <BsCalendar4Week />
+              <BsBell />
               Payables Reminder
             </Button>
             <Button type="ghost" block>
-              <BsCalendar4Week />
+              <BsBell />
               Monthly Expenses Reminder
             </Button>
           </div>
@@ -73,32 +94,34 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = (props) 
               Warehouse Inventory
             </Divider>
             <Button type="ghost" block>
-              <MdOutlinePlaylistAddCheck /> Inventory Stocks
+              <BsListCheck />
+              Inventory Stocks
             </Button>
             <Button type="ghost" block>
-              <MdOutlinePlaylistAddCheck /> Stocks Requests
+              <BsReplyAll />
+              Stocks Online Requests
             </Button>
             <Button type="ghost" block>
-              <TbTruckLoading /> Delivery Schedules
+              <BsCalendar2Week />
+              Delivery Schedules
             </Button>
             <Button type="ghost" block>
-              <MdOutlineInventory />
+              <BsFileText />
               Purchase Order Schedules
             </Button>
           </div>
 
           <div className="mb-5">
             <Divider orientation="left" orientationMargin={10}>
-              Documents
+              Files & Documents
             </Divider>
             <Button type="ghost" block>
-              <MdOutlinePlaylistAddCheck /> Order Invoices
+              <BsFileEarmarkPdf />
+              Order Invoices
             </Button>
             <Button type="ghost" block>
-              <MdOutlinePlaylistAddCheck /> Customer Warranties
-            </Button>
-            <Button type="ghost" block>
-              <MdOutlinePlaylistAddCheck /> Product Warranties
+              <BsFileEarmarkPdf />
+              Product Warranties
             </Button>
           </div>
 
@@ -107,7 +130,12 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = (props) 
               Customers
             </Divider>
             <Button type="ghost" block>
-              <MdOutlinePlaylistAddCheck /> Transactions History
+              <BsPersonLinesFill />
+              Customers List
+            </Button>
+            <Button type="ghost" block>
+              <BsFileRuled />
+              Transactions History
             </Button>
           </div>
 
@@ -116,14 +144,25 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = (props) 
               Time Keeping
             </Divider>
             <Button type="ghost" block>
-              <MdOutlinePlaylistAddCheck /> Employees Log
+              <BsClockHistory />
+              Employees Log
+            </Button>
+          </div>
+
+          <div className="mb-5">
+            <Divider orientation="left" orientationMargin={10}>
+              System Maintenance
+            </Divider>
+            <Button type="ghost" block>
+              <BsHddStack />
+              Database Archives
             </Button>
           </div>
         </div>
       </Sider>
 
       <Layout className="wrapper-dashboard-main">
-        <Content></Content>
+        <Content>{props.children}</Content>
       </Layout>
     </Layout>
   )
