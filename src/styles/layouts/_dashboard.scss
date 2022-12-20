@@ -106,7 +106,54 @@
 
     .ant-layout-content {
       height: 100%;
-      background-color: #F7F8F9;
+      // background-color: #F7F8F9;
+      background-color: #FFFFFF;
+
+      .header {
+        height: 60px;
+        width: 95%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .ant-breadcrumb {
+          &-link {
+            color: #555555;
+            font-size: 13px;
+          }
+        }
+
+        &-nav {
+          button {
+            color: #787878;
+            font-size: 13px;
+            margin: 0 5px;
+
+            .icon {
+              font-size: 15px !important;
+            }
+
+            &:hover {
+              color: #565656;
+            }
+          }
+        }
+      }
+
+      .top-container {
+        background-color: #F6F7FF;
+        height: 280px;
+        width: 100%;
+      }
+
+      .page-content-container {
+        min-height: 300px;
+        width: 95%;
+        border: solid 1px #F1F1F1;
+        margin: 0 auto;
+        margin-top: -180px;
+      }
     }
   }
 }
