@@ -28,4 +28,11 @@ export default class AuthService {
 
     return response
   }
+
+  logout(): void {
+    storage.remove('accessToken')
+    storage.remove('user')
+
+    window.location.href = '/system/login'
+  }
 }

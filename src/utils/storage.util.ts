@@ -12,7 +12,7 @@ export const storage = {
     return null
   },
   remove: (key: string) => {
-    //
+    localStorage.removeItem(key)
   },
   removeAll: () => {
     //

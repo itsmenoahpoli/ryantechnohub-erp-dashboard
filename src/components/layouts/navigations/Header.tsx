@@ -2,8 +2,11 @@ import React from 'react'
 import { Breadcrumb, Button } from 'antd'
 import { BsFullscreenExit, BsArrowsFullscreen } from 'react-icons/bs'
 
+import { AUTH_SERVICE } from '@services/index'
+
 export const Header: React.FC = (props: any) => {
   const [isFullscreen, setIsFullsreen] = React.useState<boolean>(false)
+
   const requestWindowFullscreen = () => {
     setIsFullsreen((prevState) => !prevState)
     if (isFullscreen) {
@@ -11,6 +14,10 @@ export const Header: React.FC = (props: any) => {
     }
 
     document.documentElement.requestFullscreen()
+  }
+
+  const handleLogout = () => {
+    AUTH_SERVICE.logout()
   }
 
   return (
@@ -32,7 +39,9 @@ export const Header: React.FC = (props: any) => {
         </Button>
         <Button type="ghost">Session History</Button>
         <Button type="ghost">My Account</Button>
-        <Button type="default">End Session</Button>
+        <Button type="default" onClick={handleLogout}>
+          End Session
+        </Button>
       </div>
     </div>
   )

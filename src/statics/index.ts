@@ -1,0 +1,1 @@
+export { SIDEBAR_ITEMS } from '@statics/sidebar.static'

@@ -9,7 +9,7 @@ const ACCOUNTINGS_ROUTES = [
     element: <AccountingsPage />,
     children: [
       {
-        path: '/dashboard/accountings/payable-reminders',
+        path: '/dashboard/accountings/payables-reminders',
         element: <PayableRemindersPage />,
       },
     ],
