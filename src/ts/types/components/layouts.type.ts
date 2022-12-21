@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 export type IAppLayoutProps = {
-  type: 'dashboard' | 'auth'
+  type: 'dashboard' | 'auth' | 'error'
   children: ReactNode
 }
 

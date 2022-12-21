@@ -1,15 +1,12 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
 import { Breadcrumb, Button } from 'antd'
 import { BsFullscreenExit, BsArrowsFullscreen } from 'react-icons/bs'
 
 import { AUTH_SERVICE } from '@services/index'
+import { createBreadcrumbItems, capitalize } from '@utils/index'
 
 export const Header: React.FC = (props: any) => {
-  const location = useLocation()
   const [isFullscreen, setIsFullsreen] = React.useState<boolean>(false)
-
-  // console.log(location)
 
   const requestWindowFullscreen = () => {
     setIsFullsreen((prevState) => !prevState)
@@ -24,13 +21,17 @@ export const Header: React.FC = (props: any) => {
     AUTH_SERVICE.logout()
   }
 
+  console.log(createBreadcrumbItems())
+
   return (
     <div className="header">
       <div className="header-nav">
         <Breadcrumb>
-          <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
-          <Breadcrumb.Item>Data Monitoring</Breadcrumb.Item>
-          <Breadcrumb.Item>Sales Monitoring</Breadcrumb.Item>
+          {createBreadcrumbItems().map((breadcrumb: any) => (
+            <Breadcrumb.Item key={`breadcrumb-item-${breadcrumb}`}>
+              {capitalize(breadcrumb.replaceAll('-', ' '))}
+            </Breadcrumb.Item>
+          ))}
         </Breadcrumb>
       </div>
       <div className="header-nav">

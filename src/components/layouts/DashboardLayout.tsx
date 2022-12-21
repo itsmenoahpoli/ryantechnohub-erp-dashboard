@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Navigate } from 'react-router-dom'
 import { Layout, Card } from 'antd'
 
 import { DEFAULT_META } from '@config/meta.config'
@@ -15,11 +15,11 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = (props) 
 
   React.useEffect(() => {
     document.title = DEFAULT_META.dashboard.title
-
-    if (storage.get('accessToken') === null && storage.get('user') === null) {
-      navigate('/system/login')
-    }
   }, [])
+
+  if (storage.get('accessToken') === null && storage.get('user') === null) {
+    return <Navigate to="/system/login" />
+  }
 
   return (
     <Layout className="wrapper-dashboard" hasSider>
