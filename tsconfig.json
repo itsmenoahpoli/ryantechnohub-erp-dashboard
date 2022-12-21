@@ -27,6 +27,7 @@
       "@router/*": ["src/router/*"],
       "@services/*": ["src/services/*"],
       "@statics/*": ["src/statics/*"],
+      "@store/*": ["src/store/*"],
       "@styles/*": ["src/styles/*"],
       "@ts/*": ["src/ts/*"],
       "@utils/*": ["src/utils/*"],

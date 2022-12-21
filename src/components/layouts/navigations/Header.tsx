@@ -1,11 +1,15 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 import { Breadcrumb, Button } from 'antd'
 import { BsFullscreenExit, BsArrowsFullscreen } from 'react-icons/bs'
 
 import { AUTH_SERVICE } from '@services/index'
 
 export const Header: React.FC = (props: any) => {
+  const location = useLocation()
   const [isFullscreen, setIsFullsreen] = React.useState<boolean>(false)
+
+  // console.log(location)
 
   const requestWindowFullscreen = () => {
     setIsFullsreen((prevState) => !prevState)

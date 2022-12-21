@@ -161,6 +161,11 @@
         border: solid 1px #F1F1F1;
         margin: 0 auto;
         margin-top: -150px;
+        padding: 0 !important;
+
+        .ant-card-body {
+          padding: 0 !important;
+        }
       }
     }
   }
