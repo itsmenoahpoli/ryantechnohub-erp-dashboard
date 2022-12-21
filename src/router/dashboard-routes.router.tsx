@@ -6,12 +6,6 @@ import { HomePage } from '@pages/dashboard'
 const DASHBOARD_ROUTES = [
   {
     path: '',
-    meta: {
-      sidebar: {
-        label: 'Dashboard',
-        icon: null,
-      },
-    },
     element: <HomePage />,
   },
 ]
