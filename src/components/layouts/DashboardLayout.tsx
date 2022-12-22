@@ -18,7 +18,7 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = (props) 
   }, [])
 
   if (storage.get('accessToken') === null && storage.get('user') === null) {
-    return <Navigate to="/system/login" />
+    return <Navigate to="/system/auth/login" />
   }
 
   return (
@@ -27,7 +27,7 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = (props) 
         <Sidebar navigate={navigate} user={user} />
       </Sider>
 
-      <Layout className="wrapper-dashboard-main">
+      <Layout className="wrapper-dashboard-main animate__animated animate__faster animate__fadeIn">
         <Content>
           <div className="top-container">
             <Header />

@@ -6,26 +6,25 @@ import { RootPage } from '@pages/RootPage'
 /**
  * System | Auth | Error | Maintenance Pages
  */
-import { LoginPage } from '@pages/system'
+import { ErrorPage } from '@pages/system'
 
 /**
  * Module Pages
  */
-import ACCOUNTINGS_ROUTES from './accountings-routes.router'
 import DASHBOARD_ROUTES from './dashboard-routes.router'
+import SYSTEM_PAGES_ROUTES from './system-routes.router'
+import ACCOUNTINGS_ROUTES from './accountings-routes.router'
 
 const APP_ROUTES = [
   {
     path: '/',
     element: <RootPage />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/system',
         children: [
-          {
-            path: 'login',
-            element: <LoginPage />,
-          },
+          ...SYSTEM_PAGES_ROUTES
         ],
       },
       {

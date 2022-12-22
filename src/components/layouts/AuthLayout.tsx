@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { Layout, Card } from 'antd'
 import { CopyrightOutlined } from '@ant-design/icons'
 
@@ -10,14 +10,11 @@ import { storage, getCurrentYear } from '@utils/index'
 
 const { Header, Content } = Layout
 
-export const AuthLayout: React.FC<{ children: React.ReactNode }> = (props) => {
-  const navigate = useNavigate()
+export const AuthLayout: React.FC<{ children: React.ReactNode; isAuthCapture?: boolean }> = (props) => {
+  if (storage.get('accessToken') && storage.get('user')) {
+    return <Navigate to="/dashboard" />
+  }
 
-  React.useEffect(() => {
-    if (storage.get('accessToken') && storage.get('user')) {
-      navigate('/dashboard')
-    }
-  }, [])
   return (
     <Layout className="wrapper-auth h-100vh">
       <img src={IMG_LEFT} className="auth-svg left" />
@@ -27,7 +24,11 @@ export const AuthLayout: React.FC<{ children: React.ReactNode }> = (props) => {
         <p className="fw-bold">Ryan's Technohub ERP Dashboard</p>
       </Header>
       <Content className="h-100">
-        <Card>{props.children}</Card>
+        {props.isAuthCapture ? (
+          <Card style={{ width: '700px', marginTop: '10px' }}>{props.children}</Card>
+        ) : (
+          <Card>{props.children}</Card>
+        )}
         <p className="text-center footer-label mt-3">
           <CopyrightOutlined /> Netclick Technologies | Ryan's Technohub | NoahDev {getCurrentYear()}
         </p>

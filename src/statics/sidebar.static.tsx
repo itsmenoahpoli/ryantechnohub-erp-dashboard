@@ -1,7 +1,7 @@
 import {
+  BsHouse,
   BsColumns,
   BsFileBarGraph,
-  BsBell,
   BsCalendar2Week,
   BsListCheck,
   BsUiChecks,
@@ -14,6 +14,16 @@ import {
 } from 'react-icons/bs'
 
 export const SIDEBAR_ITEMS: Array<object> = [
+  {
+    group: 'Dashboard',
+    items: [
+      {
+        icon: <BsHouse />,
+        label: 'General Overview',
+        url: '/dashboard'
+      }
+    ]
+  },
   {
     group: 'Data Monitoring',
     items: [

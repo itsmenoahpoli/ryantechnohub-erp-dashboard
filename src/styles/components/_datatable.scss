@@ -63,6 +63,15 @@
         font-weight: normal !important;
         text-transform: uppercase;
         color: #787878;
+        background-color: #FFFFFF;
+        padding: 10px 16px;
+        border-bottom: solid 1px #FAFAFA;
+      }
+    }
+
+    &-tbody {
+      tr:last-child td {
+        border-bottom: 0;
       }
     }
   }

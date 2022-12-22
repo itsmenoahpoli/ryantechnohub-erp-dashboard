@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 
 export type IAppLayoutProps = {
   type: 'dashboard' | 'auth' | 'error'
+  isAuthCapture?: boolean
   children: ReactNode
 }
 
