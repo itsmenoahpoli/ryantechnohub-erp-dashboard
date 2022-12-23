@@ -21,8 +21,6 @@ export const Header: React.FC = (props: any) => {
     AUTH_SERVICE.logout()
   }
 
-  console.log(createBreadcrumbItems())
-
   return (
     <div className="header">
       <div className="header-nav">

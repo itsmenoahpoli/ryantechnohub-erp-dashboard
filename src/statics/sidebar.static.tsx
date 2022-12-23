@@ -20,9 +20,9 @@ export const SIDEBAR_ITEMS: Array<object> = [
       {
         icon: <BsHouse />,
         label: 'General Overview',
-        url: '/dashboard'
-      }
-    ]
+        url: '/dashboard',
+      },
+    ],
   },
   {
     group: 'Data Monitoring',
@@ -60,17 +60,17 @@ export const SIDEBAR_ITEMS: Array<object> = [
       {
         icon: <BsCalendar2Week />,
         label: 'Receivables Reminders',
-        url: '/dashboard/accountings/receivables-reminders',
+        url: '/dashboard/accountings/account-reminders?type=receivables',
       },
       {
         icon: <BsCalendar2Week />,
         label: 'Payables Reminders',
-        url: '/dashboard/accountings/payables-reminders',
+        url: '/dashboard/accountings/account-reminders?type=payables',
       },
       {
         icon: <BsCalendar2Week />,
         label: 'Monthly Expenses Reminders',
-        url: '/dashboard/accountings/month-expenses-reminders',
+        url: '/dashboard/accountings/account-reminders?type=monthly-expenses',
       },
     ],
   },

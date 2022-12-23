@@ -1,7 +1,7 @@
 /**
  * Accountings Router
  */
-import { AccountingsPage, PayableRemindersPage } from '@pages/dashboard'
+import { AccountingsPage, AccountRemindersPage } from '@pages/dashboard'
 
 const ACCOUNTINGS_ROUTES = [
   {
@@ -9,8 +9,8 @@ const ACCOUNTINGS_ROUTES = [
     element: <AccountingsPage />,
     children: [
       {
-        path: '/dashboard/accountings/payables-reminders',
-        element: <PayableRemindersPage />,
+        path: '/dashboard/accountings/account-reminders',
+        element: <AccountRemindersPage />,
       },
     ],
   },

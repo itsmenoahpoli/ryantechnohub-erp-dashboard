@@ -23,6 +23,7 @@ export default class AuthService {
 
     storage.set('accessToken', response.data.accessToken)
     storage.set('user', response.data.user)
+    storage.set('user-face-captured', false)
 
     window.location.href = '/dashboard'
 
