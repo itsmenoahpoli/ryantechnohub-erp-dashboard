@@ -29,7 +29,7 @@ export const DashboardLayout: React.FC<{ children: React.ReactNode }> = (props) 
   }
 
   if (storage.get('accessToken') === null && storage.get('user') === null) {
-    return <Navigate to="/system/auth/login" />
+    return <Navigate to="/system/auth/login?status=unauthorized" />
   }
 
   return (

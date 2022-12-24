@@ -5,7 +5,6 @@ export default class AccountingsService {
 
   async getRemindersList(params: any): Promise<any> {
     const response: any = await $axios.get('/core/accountings/account-reminders?type=' + params.type)
-    console.log('getRemindersList')
 
     return response;
   }

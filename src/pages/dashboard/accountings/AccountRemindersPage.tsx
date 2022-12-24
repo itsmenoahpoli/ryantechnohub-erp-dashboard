@@ -13,7 +13,7 @@ export const AccountRemindersPage: React.FC = () => {
     return await ACCOUNTING_SERVICE.getRemindersList({ type: searchParams.get('type') })
   }
 
-  const { isLoading, data, refetch } = useQuery({
+  const { isFetching, data, refetch } = useQuery({
     queryKey: ['account-reminders'],
     queryFn: fetchAccountReminders,
     select: (data) => data.data,
@@ -22,6 +22,14 @@ export const AccountRemindersPage: React.FC = () => {
   const refreshList = () => {
     refetch()
   }
+
+  const exportListToCSV = () => {
+    //
+  }
+
+  React.useEffect(() => {
+    refreshList()
+  }, [searchParams])
 
   return (
     <div>
@@ -42,7 +50,7 @@ export const AccountRemindersPage: React.FC = () => {
         </div>
       </div>
 
-      <AccountingRemindersList data={data} loading={isLoading} />
+      <AccountingRemindersList data={data} loading={isFetching} />
     </div>
   )
 }

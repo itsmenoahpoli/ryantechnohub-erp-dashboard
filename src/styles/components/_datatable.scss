@@ -20,7 +20,7 @@
       &.primary:hover {
         background-color: #001529;
         border-color: #001529;
-        color: #ffffff;
+        color: #FFFFFF !important;
       }
 
       &:hover {
@@ -43,11 +43,25 @@
 .ant-table {
   &-container {
     table > thead > tr:first-child {
+      th {
+        font-size: 13px;
+      }
+
       th:first-child {
         border-start-start-radius: 0 !important;
       }
 
       th:last-child {
+        border-start-end-radius: 0 !important;
+      }
+    }
+
+    table > tbody > tr:first-child {
+      td:first-child {
+        border-start-start-radius: 0 !important;
+      }
+
+      td:last-child {
         border-start-end-radius: 0 !important;
       }
     }
@@ -68,4 +82,8 @@
       }
     }
   }
+}
+
+.ant-pagination {
+  padding: 10px 15px;
 }
