@@ -22,7 +22,10 @@
       "@components/*": ["src/components/*"],
       "@features/*": ["src/components/features/*"],
       "@config/*": ["src/config/*"],
+      "@constants/*": ["src/constants/*"],
       "@hoc/*": ["src/hoc/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@interfaces/*": ["src/interfaces/*"],
       "@layouts/*": ["src/layouts/*"],
       "@pages/*": ["src/pages/*"],
       "@router/*": ["src/router/*"],
@@ -30,7 +33,6 @@
       "@statics/*": ["src/statics/*"],
       "@store/*": ["src/store/*"],
       "@styles/*": ["src/styles/*"],
-      "@ts/*": ["src/ts/*"],
       "@utils/*": ["src/utils/*"],
     }
   },

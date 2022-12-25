@@ -1,12 +1,7 @@
 import React from 'react'
 
+import { IAppLayoutProps } from '@interfaces/components/layouts.interface'
 import { DashboardLayout, AuthLayout } from '@components/layouts'
-
-interface IAppLayoutProps {
-  type: 'auth' | 'dashboard' | 'error'
-  children: React.ReactNode
-  isAuthCapture?: boolean
-}
 
 export const AppLayout: React.FC<IAppLayoutProps> = (props) => {
   if (props.type === 'dashboard') {

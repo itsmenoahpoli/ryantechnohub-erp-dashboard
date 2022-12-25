@@ -3,17 +3,11 @@ import { Navigate } from 'react-router-dom'
 import { Layout, Card } from 'antd'
 import { CopyrightOutlined } from '@ant-design/icons'
 
-import BRAND_LOGO from '@assets/brand/brand-logo.png'
-import IMG_LEFT from '@assets/svg/auth-left-svg.svg'
-import IMG_RIGHT from '@assets/svg/auth-right-svg.svg'
+import { BRAND_LOGO, IMG_LEFT, IMG_RIGHT } from '@assets/index'
+import type { IAuthLayoutProps } from '@interfaces/components/layouts.interface'
 import { storage, getCurrentYear } from '@utils/index'
 
 const { Header, Content } = Layout
-
-interface IAuthLayoutProps {
-  children: React.ReactNode
-  isAuthCapture?: boolean
-}
 
 export const AuthLayout: React.FC<IAuthLayoutProps> = (props) => {
   if (storage.get('accessToken') && storage.get('user')) {

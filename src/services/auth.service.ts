@@ -1,31 +1,19 @@
 import { $axios } from "@api/index"
 import { storage } from '@utils/index'
-
-interface ICredentials {
-  email: string
-  password: string
-}
-
-interface ILoginResponse {
-  data: {
-    accessToken: string
-    authenticated: boolean
-    user: object
-    request: object
-  }
-}
+import type { ICredentials, ILoginResponse } from '@interfaces/services/auth-service.interface'
+import type { IHttpResponse } from "@interfaces/http-response.interface"
 
 export default class AuthService {
   constructor() { }
 
-  async login(credentials: ICredentials): Promise<ILoginResponse> {
-    const response: ILoginResponse = await $axios.post('/core/auth/login', credentials)
+  async login(credentials: ICredentials): Promise<IHttpResponse<ILoginResponse>> {
+    const response: IHttpResponse<ILoginResponse> = await $axios.post('/core/auth/login', credentials)
 
-    storage.set('accessToken', response.data.accessToken)
-    storage.set('user', response.data.user)
-    storage.set('user-face-captured', false)
+    // storage.set('accessToken', response.data.accessToken)
+    // storage.set('user', response.data.user)
+    // storage.set('user-face-captured', false)
 
-    window.location.href = '/dashboard'
+    // window.location.href = '/dashboard'
 
     return response
   }

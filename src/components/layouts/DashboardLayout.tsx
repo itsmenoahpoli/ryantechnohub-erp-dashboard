@@ -1,14 +1,11 @@
 import React from 'react'
 import { Layout, Card } from 'antd'
 
+import type { IDashboardLayoutProps } from '@interfaces/components/layouts.interface'
 import { DEFAULT_META } from '@config/meta.config'
 import { Header, Sidebar } from '@components/layouts/navigations'
 
 const { Sider, Content } = Layout
-
-interface IDashboardLayoutProps {
-  children: React.ReactNode
-}
 
 export const DashboardLayout: React.FC<IDashboardLayoutProps> = (props) => {
   React.useEffect(() => {

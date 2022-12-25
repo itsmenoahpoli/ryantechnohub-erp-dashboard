@@ -17,7 +17,12 @@ const onRequest = (request: AxiosRequestConfig): AxiosRequestConfig => {
 }
 
 const onRequestError = (error: AxiosError): Promise<AxiosError> => {
-  console.log('Request Error:', Object.keys(error))
+  notification.error({
+    duration: 5,
+    message: 'Request Error',
+    description: 'Failed to send request to server'
+  })
+
   return Promise.reject(error)
 }
 
@@ -26,9 +31,6 @@ const onResponse = (response: AxiosResponse): AxiosResponse => {
 }
 
 const onResponseError = (error: AxiosError): Promise<AxiosError> => {
-  console.log('Response Error:', Object.keys(error))
-
-  console.log(error.code)
   if (error.code === 'ERR_NETWORK') {
     notification.error({
       duration: 5,

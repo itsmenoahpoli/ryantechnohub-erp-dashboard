@@ -1,5 +1,5 @@
 export { getCurrentYear, formatDate } from '@utils/datetime.utils'
 export { getInitials, capitalize } from '@utils/string.util'
-export { createBreadcrumbItems } from '@utils/links.util'
+export { createBreadcrumbItems, createQs } from '@utils/links.util'
 export { exportAsCSV } from '@utils/exports.util'
 export { storage } from '@utils/storage.util'

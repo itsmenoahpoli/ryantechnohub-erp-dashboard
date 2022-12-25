@@ -4,3 +4,7 @@ export const createBreadcrumbItems = (): Array<string> => {
 
   return breadcrumbItems
 }
+
+export const createQs = (params: any): string => {
+  return '?' + String(Object.keys(params).map((k: any) => k + '=' + params[k]).join('&'))
+}
