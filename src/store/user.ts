@@ -1,18 +1,11 @@
 import create from 'zustand'
 import { mountStoreDevtool } from 'simple-zustand-devtools'
 
+import { TUserStore } from '@ts/types/store/user.type'
 import { storage } from '@utils/index'
 
-export type IUserStore = {
-  user: {
-    name: string,
-    email: string,
-    email_verified_at: boolean
-  },
-  accessToken: string,
-}
 
-export const useUserStore = create<IUserStore>((set, get) => ({
+export const useUserStore = create<TUserStore>((set, get) => ({
   user: storage.get('user'),
   accessToken: storage.get('accessToken'),
 }))

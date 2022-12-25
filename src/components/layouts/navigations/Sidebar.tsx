@@ -4,7 +4,7 @@ import { Button, Divider, Avatar } from 'antd'
 import { SIDEBAR_ITEMS } from '@statics/index'
 import { getInitials } from '@utils/index'
 
-export const Sidebar: React.FC<{ navigate: (params: any) => void; user: any }> = (props) => {
+export const Sidebar: React.FC = (props: any) => {
   return (
     <React.Fragment>
       <div className="wrapper-dashboard-sidebar-header px-2">

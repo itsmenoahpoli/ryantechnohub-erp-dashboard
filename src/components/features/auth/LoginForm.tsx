@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Input, Button } from 'antd'
 
-import { ILoginFormProps, ICredentials } from '@ts/types/features/auth.type'
+import type { ILoginFormProps, ICredentials } from '@ts/types/features/auth.type'
 
 const initialValues: ICredentials = { email: 'superadmin@ryantechnohub.com', password: '1234567890' }
 

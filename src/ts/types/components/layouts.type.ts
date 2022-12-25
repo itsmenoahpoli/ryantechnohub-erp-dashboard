@@ -1,15 +1,16 @@
 import { ReactNode } from 'react'
 
-export type IAppLayoutProps = {
+export type TAppLayoutProps = {
   type: 'dashboard' | 'auth' | 'error'
   isAuthCapture?: boolean
   children: ReactNode
 }
 
-export type ILayoutProps = {
+export type TAuthLayoutProps = {
+  isAuthCapture?: boolean
   children: ReactNode
 }
 
-export type ILayoutSidebarItem = {
-
+export type TDashboardLayoutProps = {
+  children: ReactNode
 }
