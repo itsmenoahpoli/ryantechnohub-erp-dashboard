@@ -10,11 +10,7 @@ export const Header: React.FC = (props: any) => {
 
   const requestWindowFullscreen = () => {
     setIsFullsreen((prevState) => !prevState)
-    if (isFullscreen) {
-      document.exitFullscreen()
-    }
-
-    document.documentElement.requestFullscreen()
+    return isFullscreen ? document.exitFullscreen() : document.documentElement.requestFullscreen()
   }
 
   const handleLogout = () => {

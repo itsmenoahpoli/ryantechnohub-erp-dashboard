@@ -4,6 +4,6 @@ export const getCurrentYear = (): number => {
   return new Date().getFullYear()
 }
 
-export const formatDate = (datetime: string) => {
+export const formatDate = (datetime: string): string => {
   return moment(datetime).format('MMM D, Y h:mm A')
 }

@@ -1,10 +1,13 @@
 import React from 'react'
+import { useNavigate, NavigateFunction } from 'react-router-dom'
 import { Button, Divider, Avatar } from 'antd'
 
 import { SIDEBAR_ITEMS } from '@statics/index'
 import { getInitials } from '@utils/index'
 
 export const Sidebar: React.FC = (props: any) => {
+  const navigate: NavigateFunction = useNavigate()
+
   return (
     <React.Fragment>
       <div className="wrapper-dashboard-sidebar-header px-2">
@@ -21,7 +24,7 @@ export const Sidebar: React.FC = (props: any) => {
               {item.group}
             </Divider>
             {item.items.map((btn: any, idx: number) => (
-              <Button type="ghost" onClick={() => props.navigate(btn.url)} key={idx} block>
+              <Button type="ghost" onClick={() => navigate(btn.url)} key={idx} block>
                 {btn.icon}
                 {btn.label}
               </Button>

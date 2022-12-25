@@ -2,7 +2,7 @@ export const storage = {
   set: (key: string, data: any) => {
     localStorage.setItem(key, JSON.stringify({ data }))
   },
-  get: (key: string) => {
+  get: (key: string): string | null => {
     let item: any = localStorage.getItem(key)
 
     if (item) {

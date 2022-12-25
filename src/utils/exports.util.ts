@@ -1,3 +1,3 @@
-export const exportAsCSV = (data: object) => {
-  //
+export const exportAsCSV = (data: object): Array<object> => {
+  return [{}]
 }
