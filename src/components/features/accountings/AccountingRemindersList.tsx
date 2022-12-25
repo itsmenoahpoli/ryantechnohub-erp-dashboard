@@ -1,5 +1,6 @@
 import React from 'react'
 import { Table, Tag, Button } from 'antd'
+import type { ColumnsType } from 'antd/es/table'
 
 import { capitalize, formatDate } from '@utils/index'
 
@@ -22,7 +23,7 @@ const toggleTagColor = (type: string) => {
 }
 
 export const AccountingRemindersList: React.FC<IProps> = React.memo((props) => {
-  const columns: any = [
+  const columns: ColumnsType<any> = [
     {
       title: 'Type',
       key: 'type',

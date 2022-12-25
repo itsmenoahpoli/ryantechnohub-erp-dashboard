@@ -1,14 +1,13 @@
 import React from 'react'
 import { Form, Input, Button } from 'antd'
 
-export const LoginForm: React.FC = (props: any) => {
+import { ILoginFormProps, ICredentials } from '@ts/types/features/auth.type'
+
+const initialValues: ICredentials = { email: 'superadmin@ryantechnohub.com', password: '1234567890' }
+
+export const LoginForm: React.FC<ILoginFormProps> = (props) => {
   return (
-    <Form
-      layout="vertical"
-      initialValues={{ email: 'superadmin@ryantechnohub.com', password: '1234567890' }}
-      onFinish={props.onFormSubmit}
-      autoComplete="off"
-      requiredMark>
+    <Form layout="vertical" initialValues={initialValues} onFinish={props.onFormSubmit} autoComplete="off" requiredMark>
       <Form.Item
         label="Email Address"
         name="email"

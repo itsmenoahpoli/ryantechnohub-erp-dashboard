@@ -3,7 +3,7 @@ import { Form, Input, Button, Divider } from 'antd'
 
 import { AUTH_SERVICE } from '@services/index'
 import { AppLayout } from '@components/layouts'
-import { LoginForm } from '@components/forms'
+import { LoginForm } from '@features/auth/LoginForm'
 
 export const LoginPage: React.FC = () => {
   const [loading, setLoading] = React.useState<boolean>(false)
