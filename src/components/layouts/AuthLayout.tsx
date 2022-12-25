@@ -6,13 +6,16 @@ import { CopyrightOutlined } from '@ant-design/icons'
 import BRAND_LOGO from '@assets/brand/brand-logo.png'
 import IMG_LEFT from '@assets/svg/auth-left-svg.svg'
 import IMG_RIGHT from '@assets/svg/auth-right-svg.svg'
-
-import type { TAuthLayoutProps } from '@ts/types/components/layouts.type'
 import { storage, getCurrentYear } from '@utils/index'
 
 const { Header, Content } = Layout
 
-export const AuthLayout: React.FC<TAuthLayoutProps> = (props) => {
+interface IAuthLayoutProps {
+  children: React.ReactNode
+  isAuthCapture?: boolean
+}
+
+export const AuthLayout: React.FC<IAuthLayoutProps> = (props) => {
   if (storage.get('accessToken') && storage.get('user')) {
     return <Navigate to="/dashboard" />
   }

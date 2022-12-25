@@ -1,16 +1,16 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Layout, Card } from 'antd'
 
-import type { TDashboardLayoutProps } from '@ts/types/components/layouts.type'
 import { DEFAULT_META } from '@config/meta.config'
 import { Header, Sidebar } from '@components/layouts/navigations'
 
 const { Sider, Content } = Layout
 
-export const DashboardLayout: React.FC<TDashboardLayoutProps> = (props) => {
-  const navigate = useNavigate()
+interface IDashboardLayoutProps {
+  children: React.ReactNode
+}
 
+export const DashboardLayout: React.FC<IDashboardLayoutProps> = (props) => {
   React.useEffect(() => {
     document.title = DEFAULT_META.dashboard.title
   }, [])

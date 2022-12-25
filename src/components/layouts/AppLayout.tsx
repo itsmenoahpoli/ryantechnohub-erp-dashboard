@@ -1,9 +1,14 @@
 import React from 'react'
 
-import type { TAppLayoutProps } from '@ts/types/components/layouts.type'
 import { DashboardLayout, AuthLayout } from '@components/layouts'
 
-export const AppLayout: React.FC<TAppLayoutProps> = (props) => {
+interface IAppLayoutProps {
+  type: 'auth' | 'dashboard' | 'error'
+  children: React.ReactNode
+  isAuthCapture?: boolean
+}
+
+export const AppLayout: React.FC<IAppLayoutProps> = (props) => {
   if (props.type === 'dashboard') {
     return <DashboardLayout>{props.children}</DashboardLayout>
   }
