@@ -15,7 +15,10 @@ export const DashboardLayout: React.FC<IDashboardLayoutProps> = (props) => {
   return (
     <React.Fragment>
       <Layout className="wrapper-dashboard" hasSider>
-        <Sider className="wrapper-dashboard-sidebar" breakpoint="md" width={270}>
+        <Sider
+          className="wrapper-dashboard-sidebar"
+          breakpoint="md"
+          width={270}>
           <Sidebar />
         </Sider>
 
@@ -24,7 +27,11 @@ export const DashboardLayout: React.FC<IDashboardLayoutProps> = (props) => {
             <div className="top-container">
               <Header />
             </div>
-            <Card className="page-content-container">{props.children}</Card>
+            <Card
+              className="page-content-container"
+              style={{ width: props.width ?? '98%' }}>
+              {props.children}
+            </Card>
           </Content>
         </Layout>
       </Layout>

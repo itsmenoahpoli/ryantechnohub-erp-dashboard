@@ -1,0 +1,13 @@
+.ant-form {
+  &-item {
+    label {
+      color: #464646 !important;
+      font-size: 13px;
+    }
+
+    .ant-input {
+      height: 40px;
+      font-size: 13px;
+    }
+  }
+}

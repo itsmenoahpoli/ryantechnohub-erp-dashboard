@@ -5,8 +5,14 @@ import { DashboardLayout, AuthLayout } from '@components/layouts'
 
 export const AppLayout: React.FC<IAppLayoutProps> = (props) => {
   if (props.type === 'dashboard') {
-    return <DashboardLayout>{props.children}</DashboardLayout>
+    return (
+      <DashboardLayout width={props.width}>{props.children}</DashboardLayout>
+    )
   }
 
-  return <AuthLayout isAuthCapture={props.isAuthCapture}>{props.children}</AuthLayout>
+  return (
+    <AuthLayout isAuthCapture={props.isAuthCapture}>
+      {props.children}
+    </AuthLayout>
+  )
 }

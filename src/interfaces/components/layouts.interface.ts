@@ -1,5 +1,6 @@
 export interface IAppLayoutProps {
   type: 'auth' | 'dashboard' | 'error'
+  width?: string | number
   children: React.ReactNode
   isAuthCapture?: boolean
 }
@@ -11,6 +12,7 @@ export interface IAuthLayoutProps {
 
 export interface IDashboardLayoutProps {
   children: React.ReactNode
+  width?: string | number
 }
 
 export interface IErrorLayoutProps {
