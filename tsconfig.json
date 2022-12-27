@@ -28,6 +28,7 @@
       "@interfaces/*": ["src/interfaces/*"],
       "@layouts/*": ["src/layouts/*"],
       "@pages/*": ["src/pages/*"],
+      "@providers/*": ["src/providers/*"],
       "@router/*": ["src/router/*"],
       "@services/*": ["src/services/*"],
       "@statics/*": ["src/statics/*"],

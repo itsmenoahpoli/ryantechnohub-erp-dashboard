@@ -23,9 +23,7 @@ const APP_ROUTES = [
     children: [
       {
         path: '/system',
-        children: [
-          ...SYSTEM_PAGES_ROUTES
-        ],
+        children: [...SYSTEM_PAGES_ROUTES],
       },
       {
         path: '/dashboard',

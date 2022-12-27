@@ -1,9 +1,9 @@
 import { $axios } from "@api/index"
 import { storage } from '@utils/index'
-import type { ICredentials, ILoginResponse } from '@interfaces/services/auth-service.interface'
+import type { ICredentials, ILoginResponse, IAuthService } from '@interfaces/services/auth-service.interface'
 import type { IHttpResponse } from "@interfaces/http-response.interface"
 
-export default class AuthService {
+export default class AuthService implements IAuthService {
   constructor() { }
 
   async login(credentials: ICredentials): Promise<IHttpResponse<ILoginResponse>> {
