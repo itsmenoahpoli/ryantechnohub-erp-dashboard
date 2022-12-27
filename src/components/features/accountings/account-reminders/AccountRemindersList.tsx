@@ -1,9 +1,29 @@
 import React from 'react'
-import { Table, Button, Tag } from 'antd'
+import { Table, Button, Tag, Space } from 'antd'
+import { DeleteOutlined } from '@ant-design/icons'
 
 import type { IBaseTableProps } from '@interfaces/components/table.interface'
 import type { IAccountReminder } from '@interfaces/models/account-reminder.interface'
 import { formatDate, capitalize } from '@utils/index'
+
+const SelectedRowsAction: React.FC<any> = (props: any) => {
+  return (
+    <div className="list-filters-rows-action px-4 mb-4">
+      <p>
+        <b>{props.selectedRows.length}</b> rows selected, select action &mdash;
+      </p>
+
+      <Space direction="horizontal">
+        <Button
+          icon={<DeleteOutlined />}
+          onClick={props.clearSelectedRowKeys}
+          danger>
+          Delete
+        </Button>
+      </Space>
+    </div>
+  )
+}
 
 export const AccountRemindersList: React.FC<
   IBaseTableProps<IAccountReminder[]>
@@ -11,8 +31,12 @@ export const AccountRemindersList: React.FC<
   const [selectedRowKeys, setSelectedRowKeys] = React.useState<React.Key[]>([])
 
   const onSelectRow = (onSelectedRowKeys: React.Key[]) => {
-    console.log(onSelectedRowKeys)
     setSelectedRowKeys(onSelectedRowKeys)
+    props.onSelectRows(onSelectedRowKeys)
+  }
+
+  const clearSelectedRowKeys = () => {
+    setSelectedRowKeys([])
   }
 
   const toggleTagType = (type: string) => {
@@ -88,16 +112,24 @@ export const AccountRemindersList: React.FC<
   ]
 
   return (
-    <Table
-      rowKey={(row) => Number(row.id)}
-      rowSelection={{ selectedRowKeys, onChange: onSelectRow }}
-      pagination={{
-        pageSize: 25,
-        showQuickJumper: true,
-      }}
-      columns={columns}
-      dataSource={props.data}
-      loading={props.loading}
-    />
+    <React.Fragment>
+      {selectedRowKeys.length > 0 ? (
+        <SelectedRowsAction
+          selectedRows={selectedRowKeys}
+          clearSelectedRowKeys={clearSelectedRowKeys}
+        />
+      ) : null}
+      <Table
+        rowKey={(row) => Number(row.id)}
+        rowSelection={{ selectedRowKeys, onChange: onSelectRow }}
+        pagination={{
+          pageSize: 25,
+          showQuickJumper: true,
+        }}
+        columns={columns}
+        dataSource={props.data}
+        loading={props.loading}
+      />
+    </React.Fragment>
   )
 })
