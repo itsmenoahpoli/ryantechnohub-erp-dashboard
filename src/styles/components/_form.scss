@@ -1,8 +1,10 @@
 .ant-form {
   &-item {
     label {
-      color: #464646 !important;
-      font-size: 13px;
+      color: #7A7A7A !important;
+      font-size: 13px !important;
+      font-weight: 600;
+      letter-spacing: 1.15px;
     }
 
     .ant-input {

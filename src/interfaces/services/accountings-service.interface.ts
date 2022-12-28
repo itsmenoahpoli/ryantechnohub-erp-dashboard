@@ -6,4 +6,5 @@ export interface IAccountingsService {
   createReminder: (reminder: IAccountReminder) => Promise<IAccountReminder>
   updateReminder: (reminderId: number, reminder: IAccountReminder) => Promise<IAccountReminder>
   deleteReminder: (reminderId: number) => Promise<unknown>
+  batchActionOnReminders: (reminderIds: number[]) => Promise<unknown>
 }

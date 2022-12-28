@@ -1,0 +1,36 @@
+.ant-modal {
+  &-content {
+    padding: 5px 0 !important;
+  }
+
+  &-body {
+    .modal-body {
+      &-header {
+        padding: 0 20px;
+        margin: 15px 0;
+        border-bottom: solid 1px #EEEEEE;
+  
+        &-title {
+          font-size: 16px !important;
+          font-weight: bold !important;
+          margin-bottom: 0;
+        }
+  
+        &-subtitle {
+          color: #898989 !important;
+          font-size: 13px !important;
+          margin-bottom: 15px;
+        }
+      }
+  
+      &-content {
+        min-height: 80px;
+        padding: 5px 20px !important;
+      }
+    }
+  }
+
+  &-footer {
+    padding: 0 20px 10px 20px !important;
+  }
+}

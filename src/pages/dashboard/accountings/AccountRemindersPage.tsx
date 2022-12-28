@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
-import { Button, Space, Input, Alert } from 'antd'
+import { Button, Space, Input } from 'antd'
 import {
   ReloadOutlined,
   CloudDownloadOutlined,
@@ -9,8 +9,8 @@ import {
   SearchOutlined,
 } from '@ant-design/icons'
 
-import type { IAccountReminder } from '@interfaces/models/account-reminder.interface'
 import { ACCOUNTING_SERVICE } from '@services/index'
+import { IAccountReminder } from '@interfaces/models/account-reminder.interface'
 import {
   AccountRemindersList,
   AccountReminderForm,
@@ -20,6 +20,10 @@ import { AppLayout } from '@components/layouts'
 export const AccountRemindersPage: React.FC = () => {
   const [searchParams] = useSearchParams()
   const [selectedRows, setSelectedRows] = React.useState<React.Key[]>([])
+  const [form, setForm] = React.useState<any>({
+    open: false,
+    type: 'add',
+  })
 
   const fetchAccountReminders = async () => {
     return await ACCOUNTING_SERVICE.getRemindersList({
@@ -27,11 +31,27 @@ export const AccountRemindersPage: React.FC = () => {
     })
   }
 
+  const createAccountReminder = async (accountReminder: IAccountReminder) => {
+    return null
+  }
+
   const onSelectRows = (rowIds: React.Key[]) => {
     setSelectedRows([...new Set(rowIds)])
   }
 
-  const { isFetching, data, refetch } = useQuery({
+  const executeActionOnSelectedRows = (actionType: string) => {
+    return
+  }
+
+  const openForm = () => {
+    setForm({ ...form, open: true })
+  }
+
+  const closeForm = () => {
+    setForm({ ...form, open: false })
+  }
+
+  const { isLoading, data, refetch } = useQuery({
     queryKey: ['account-reminders', searchParams.get('type')],
     queryFn: fetchAccountReminders,
     select: ({ data }) => data.data,
@@ -55,14 +75,23 @@ export const AccountRemindersPage: React.FC = () => {
           </Space>
         </div>
         <div className="list-filters-panel">
-          <Button className="primary">Create Reminder</Button>
+          <Button className="primary" onClick={openForm}>
+            Create Reminder
+          </Button>
         </div>
       </div>
 
       <AccountRemindersList
         data={data}
-        loading={isFetching}
+        loading={isLoading}
         onSelectRows={onSelectRows}
+      />
+
+      <AccountReminderForm
+        isOpen={form.open}
+        type={form.type}
+        onCancel={closeForm}
+        onSubmit={createAccountReminder}
       />
     </AppLayout>
   )

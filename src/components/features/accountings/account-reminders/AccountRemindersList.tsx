@@ -14,12 +14,10 @@ const SelectedRowsAction: React.FC<any> = (props: any) => {
       </p>
 
       <Space direction="horizontal">
-        <Button
-          icon={<DeleteOutlined />}
-          onClick={props.clearSelectedRowKeys}
-          danger>
+        <Button icon={<DeleteOutlined />} danger>
           Delete
         </Button>
+        <Button onClick={props.clearSelectedRowKeys}>Clear</Button>
       </Space>
     </div>
   )
@@ -55,7 +53,7 @@ export const AccountRemindersList: React.FC<
       title: '#',
       dataIndex: 'id',
       key: 'id',
-      render: (text: string) => `R-${text}`,
+      render: (text: string) => `RMNDR-${text}`,
     },
     {
       title: 'Type',
