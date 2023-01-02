@@ -14,6 +14,7 @@ import { ErrorPage } from '@pages/system'
 import DASHBOARD_ROUTES from './dashboard-routes.router'
 import SYSTEM_PAGES_ROUTES from './system-routes.router'
 import ACCOUNTINGS_ROUTES from './accountings-routes.router'
+import WAREHOUSE_PAGES_ROUTES from './warehouse-routes.router'
 
 const APP_ROUTES = [
   {
@@ -27,7 +28,11 @@ const APP_ROUTES = [
       },
       {
         path: '/dashboard',
-        children: [...DASHBOARD_ROUTES, ...ACCOUNTINGS_ROUTES],
+        children: [
+          ...DASHBOARD_ROUTES,
+          ...ACCOUNTINGS_ROUTES,
+          ...WAREHOUSE_PAGES_ROUTES,
+        ],
       },
     ],
   },

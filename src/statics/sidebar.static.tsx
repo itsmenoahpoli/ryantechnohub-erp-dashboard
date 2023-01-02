@@ -80,7 +80,7 @@ export const SIDEBAR_ITEMS: Array<object> = [
       {
         icon: <BsListCheck />,
         label: 'Inventory Stocks',
-        url: '/dashboard/warehouse/receivables-reminders',
+        url: '/dashboard/warehouse/inventories',
       },
       {
         icon: <BsUiChecks />,

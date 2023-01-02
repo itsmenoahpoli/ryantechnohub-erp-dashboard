@@ -5,14 +5,8 @@ import { AccountingsPage, AccountRemindersPage } from '@pages/dashboard'
 
 const ACCOUNTINGS_ROUTES = [
   {
-    path: '/dashboard/accountings',
-    element: <AccountingsPage />,
-    children: [
-      {
-        path: '/dashboard/accountings/account-reminders',
-        element: <AccountRemindersPage />,
-      },
-    ],
+    path: '/dashboard/accountings/account-reminders',
+    element: <AccountRemindersPage />,
   },
 ]
 

@@ -27,12 +27,16 @@ export const AccountRemindersPage: React.FC = () => {
 
   const fetchAccountReminders = async () => {
     return await ACCOUNTING_SERVICE.getRemindersList({
-      type: searchParams.get('type'),
+      type: 'all',
     })
   }
 
   const createAccountReminder = async (accountReminder: IAccountReminder) => {
-    return null
+    return accountReminder
+  }
+
+  const deleteAccountReminder = async (reminderId: number) => {
+    return reminderId
   }
 
   const onSelectRows = (rowIds: React.Key[]) => {
@@ -40,7 +44,7 @@ export const AccountRemindersPage: React.FC = () => {
   }
 
   const executeActionOnSelectedRows = (actionType: string) => {
-    return
+    return actionType
   }
 
   const openForm = () => {
@@ -52,7 +56,7 @@ export const AccountRemindersPage: React.FC = () => {
   }
 
   const { isLoading, data, refetch } = useQuery({
-    queryKey: ['account-reminders', searchParams.get('type')],
+    queryKey: ['account-reminders'],
     queryFn: fetchAccountReminders,
     select: ({ data }) => data.data,
   })

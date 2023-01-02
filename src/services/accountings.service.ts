@@ -27,8 +27,17 @@ export default class AccountingsService implements IAccountingsService {
   }
 
   async deleteReminder(reminderId: number): Promise<any> {
-    const response: any = await $axios.delete(API_URLS.accountReminders + '/' + reminderId)
+    const response: IHttpResponse<unknown> = await $axios.delete(API_URLS.accountReminders + '/' + reminderId)
 
     return response
   }
+
+  async batchActionOnReminders(reminderIds: number[], actionType: string): Promise<unknown> {
+    const response: IHttpResponse<IAccountReminder[]> = await $axios.post(API_URLS.accountReminders + '/batch-action', {
+      reminderIds,
+      actionType
+    })
+
+    return response
+  };
 }

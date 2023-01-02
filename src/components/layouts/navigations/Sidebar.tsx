@@ -19,12 +19,20 @@ export const Sidebar: React.FC = (props: any) => {
       </div>
       <div className="wrapper-dashboard-sidebar-body px-2">
         {SIDEBAR_ITEMS.map((item: any) => (
-          <div className="mb-5" key={'sidebar-group-' + item.group.toLowerCase().replaceAll(' ', '-')}>
+          <div
+            className="mb-5"
+            key={
+              'sidebar-group-' + item.group.toLowerCase().replaceAll(' ', '-')
+            }>
             <Divider orientation="left" orientationMargin={10}>
               {item.group}
             </Divider>
             {item.items.map((btn: any, idx: number) => (
-              <Button type="ghost" onClick={() => navigate(btn.url)} key={idx} block>
+              <Button
+                type="ghost"
+                onClick={() => navigate(btn.url)}
+                key={idx}
+                block>
                 {btn.icon}
                 {btn.label}
               </Button>

@@ -32,11 +32,7 @@ const onResponse = (response: AxiosResponse): AxiosResponse => {
 
 const onResponseError = (error: AxiosError): Promise<AxiosError> => {
   if (error.code === 'ERR_NETWORK') {
-    notification.error({
-      duration: 5,
-      message: 'Network Error',
-      description: 'Failed to connect to server'
-    })
+    notification.error({ duration: 5, message: 'Network Error', description: 'Failed to connect to server' })
   }
 
   return Promise.reject(error)
