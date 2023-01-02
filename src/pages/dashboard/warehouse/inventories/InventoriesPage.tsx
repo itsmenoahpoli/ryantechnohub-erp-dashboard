@@ -1,4 +1,5 @@
 import React from 'react'
+import { useQuery } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
 import { Button, Space, Input } from 'antd'
 import {
@@ -8,6 +9,8 @@ import {
   SearchOutlined,
 } from '@ant-design/icons'
 
+import { INVENTORY_SERVICE } from '@services/index'
+import { InventoriesList } from '@features/warehouse'
 import { AppLayout } from '@components/layouts'
 
 export const InventoriesPage: React.FC = () => {
@@ -32,9 +35,14 @@ export const InventoriesPage: React.FC = () => {
         </div>
         <div className="list-filters-panel">
           <Button
+            onClick={() => navigate('/dashboard/warehouse/inventories/upload')}>
+            Manage Categories
+          </Button>
+
+          <Button
             className="primary"
             onClick={() => navigate('/dashboard/warehouse/inventories/upload')}>
-            Uplaod Inventory
+            Upload Inventory
           </Button>
         </div>
       </div>

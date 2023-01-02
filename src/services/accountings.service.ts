@@ -6,38 +6,57 @@ import type { IAccountReminder } from '@interfaces/models/account-reminder.inter
 import type { IHttpResponse } from '@interfaces/http-response.interface'
 
 export default class AccountingsService implements IAccountingsService {
-  constructor() { }
+  constructor() {}
 
   async getRemindersList(params: any): Promise<any> {
-    const response: IHttpResponse<IAccountReminder[]> = await $axios.get(API_URLS.accountReminders + createQs(params))
+    const response: IHttpResponse<IAccountReminder[]> = await $axios.get(
+      API_URLS.accountReminders + createQs(params),
+    )
 
-    return response;
+    return response
   }
 
   async createReminder(reminder: IAccountReminder): Promise<any> {
-    const response: IHttpResponse<IAccountReminder> = await $axios.post(API_URLS.accountReminders, reminder)
+    const response: IHttpResponse<IAccountReminder> = await $axios.post(
+      API_URLS.accountReminders,
+      reminder,
+    )
 
-    return response;
+    return response
   }
 
-  async updateReminder(reminderId: number, reminder: IAccountReminder): Promise<any> {
-    const response: IHttpResponse<IAccountReminder> = await $axios.patch(API_URLS.accountReminders + '/' + reminderId, reminder)
+  async updateReminder(
+    reminderId: number,
+    reminder: IAccountReminder,
+  ): Promise<any> {
+    const response: IHttpResponse<IAccountReminder> = await $axios.patch(
+      API_URLS.accountReminders + '/' + reminderId,
+      reminder,
+    )
 
     return response
   }
 
   async deleteReminder(reminderId: number): Promise<any> {
-    const response: IHttpResponse<unknown> = await $axios.delete(API_URLS.accountReminders + '/' + reminderId)
+    const response: IHttpResponse<unknown> = await $axios.delete(
+      API_URLS.accountReminders + '/' + reminderId,
+    )
 
     return response
   }
 
-  async batchActionOnReminders(reminderIds: number[], actionType: string): Promise<unknown> {
-    const response: IHttpResponse<IAccountReminder[]> = await $axios.post(API_URLS.accountReminders + '/batch-action', {
-      reminderIds,
-      actionType
-    })
+  async batchActionOnReminders(
+    reminderIds: number[],
+    actionType: string,
+  ): Promise<unknown> {
+    const response: IHttpResponse<IAccountReminder[]> = await $axios.post(
+      API_URLS.accountReminders + '/batch-action',
+      {
+        reminderIds,
+        actionType,
+      },
+    )
 
     return response
-  };
+  }
 }

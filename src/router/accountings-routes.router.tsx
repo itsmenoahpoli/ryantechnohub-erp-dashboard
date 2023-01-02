@@ -1,7 +1,7 @@
 /**
  * Accountings Router
  */
-import { AccountingsPage, AccountRemindersPage } from '@pages/dashboard'
+import { AccountRemindersPage } from '@pages/dashboard'
 
 const ACCOUNTINGS_ROUTES = [
   {

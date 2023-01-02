@@ -1,13 +1,22 @@
-import { $axios } from "@api/index"
+import { $axios } from '@api/index'
 import { storage } from '@utils/index'
-import type { ICredentials, ILoginResponse, IAuthService } from '@interfaces/services/auth-service.interface'
-import type { IHttpResponse } from "@interfaces/http-response.interface"
+import type {
+  ICredentials,
+  ILoginResponse,
+  IAuthService,
+} from '@interfaces/services/auth-service.interface'
+import type { IHttpResponse } from '@interfaces/http-response.interface'
 
 export default class AuthService implements IAuthService {
-  constructor() { }
+  constructor() {}
 
-  async login(credentials: ICredentials): Promise<IHttpResponse<ILoginResponse>> {
-    const response: IHttpResponse<ILoginResponse> = await $axios.post('/core/auth/login', credentials)
+  async login(
+    credentials: ICredentials,
+  ): Promise<IHttpResponse<ILoginResponse>> {
+    const response: IHttpResponse<ILoginResponse> = await $axios.post(
+      '/core/auth/login',
+      credentials,
+    )
 
     // storage.set('accessToken', response.data.accessToken)
     // storage.set('user', response.data.user)
