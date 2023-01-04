@@ -9,28 +9,29 @@
     width: 100%;
 
     button {
-      background-color: #FCFCFC;
-      border-color: #E5EAF0;
+      background-color: #fcfcfc;
+      border-color: #e5eaf0;
       color: #676767;
-      height: 40px;
+      height: 32px;
+      font-size: 12px;
 
       &.primary,
       &.primary:hover {
         background-color: #001529;
         border-color: #001529;
-        color: #FFFFFF !important;
+        color: #ffffff !important;
       }
 
       &:hover {
         color: #262626 !important;
-        border-color: #EEEEEE !important;
+        border-color: #eeeeee !important;
       }
     }
 
     &:first-child {
       .ant-input {
         width: 300px;
-        font-size: 14px;
+        font-size: 12px;
       }
     }
 
@@ -46,7 +47,7 @@
     &:hover {
       background-color: red !important;
       border-color: red !important;
-      color: #FFFFFF !important;
+      color: #ffffff !important;
     }
   }
 }
@@ -54,10 +55,6 @@
 .ant-table {
   &-container {
     table > thead > tr:first-child {
-      th {
-        font-size: 13px;
-      }
-
       th:first-child {
         border-start-start-radius: 0 !important;
       }
@@ -65,6 +62,10 @@
       th:last-child {
         border-start-end-radius: 0 !important;
       }
+    }
+
+    table > thead > tr {
+      font-size: 12px;
     }
 
     table > tbody > tr:first-child {
@@ -76,17 +77,21 @@
         border-start-end-radius: 0 !important;
       }
     }
+
+    table > tbody > tr {
+      font-size: 12px;
+    }
   }
 
   &-thead {
     tr > th {
       color: #555555 !important;
-      background-color: #FCFCFC !important;
+      background-color: #fcfcfc !important;
       font-weight: 700 !important;
       letter-spacing: 1.15px !important;
       padding: 12px 16px !important;
-      border-top: solid 1px #F1F1F1 !important;
-      border-bottom: solid 1px #F1F1F1 !important;
+      border-top: solid 1px #f1f1f1 !important;
+      border-bottom: solid 1px #f1f1f1 !important;
 
       &::before {
         display: none !important;

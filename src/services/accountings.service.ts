@@ -1,3 +1,4 @@
+import { notification } from 'antd'
 import { $axios } from '@api/index'
 import API_URLS from '@constants/api.constant'
 import { createQs } from '@utils/index'
@@ -21,6 +22,14 @@ export default class AccountingsService implements IAccountingsService {
       API_URLS.accountReminders,
       reminder,
     )
+
+    if (response.status === 201) {
+      notification.success({
+        duration: 5,
+        message: 'Created',
+        description: 'Account reminder created successfully',
+      })
+    }
 
     return response
   }

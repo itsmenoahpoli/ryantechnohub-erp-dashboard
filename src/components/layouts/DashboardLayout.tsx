@@ -3,6 +3,7 @@ import { Layout, Card } from 'antd'
 
 import type { IDashboardLayoutProps } from '@interfaces/components/layouts.interface'
 import { DEFAULT_META } from '@config/meta.config'
+import { getRouteLabel } from '@utils/index'
 import { Header, Sidebar } from '@components/layouts/navigations'
 
 const { Sider, Content } = Layout
@@ -26,6 +27,7 @@ export const DashboardLayout: React.FC<IDashboardLayoutProps> = (props) => {
           <Content>
             <div className="top-container">
               <Header />
+              <h1 className="page-name fw-bold">{getRouteLabel()}</h1>
             </div>
             <Card
               className="page-content-container"

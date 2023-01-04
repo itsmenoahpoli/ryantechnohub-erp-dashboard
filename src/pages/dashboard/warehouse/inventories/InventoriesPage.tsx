@@ -15,6 +15,17 @@ import { AppLayout } from '@components/layouts'
 
 export const InventoriesPage: React.FC = () => {
   const navigate = useNavigate()
+  const [selectedRows, setSelectedRows] = React.useState<React.Key[]>([])
+
+  const { isLoading, data, refetch } = useQuery({
+    queryKey: ['inventory-products'],
+    queryFn: async () => await INVENTORY_SERVICE.getInventoriesProducts({}),
+    select: ({ data }) => data,
+  })
+
+  const onSelectRows = (rowIds: React.Key[]) => {
+    setSelectedRows([...new Set(rowIds)])
+  }
 
   return (
     <AppLayout type="dashboard">
@@ -22,20 +33,15 @@ export const InventoriesPage: React.FC = () => {
         <div className="list-filters-panel">
           <Space direction="vertical">
             <Space direction="horizontal">
-              <Button icon={<ReloadOutlined />} />
+              <Button onClick={() => null} icon={<ReloadOutlined />} />
               <Button icon={<CloudDownloadOutlined />}>Export</Button>
               <Button icon={<FilterOutlined />}>Filters</Button>
-              <Input
-                prefix={<SearchOutlined />}
-                placeholder="Search"
-                size="large"
-              />
+              <Input prefix={<SearchOutlined />} placeholder="Search" />
             </Space>
           </Space>
         </div>
         <div className="list-filters-panel">
-          <Button
-            onClick={() => navigate('/dashboard/warehouse/inventories/upload')}>
+          <Button onClick={() => navigate('/dashboard/warehouse/inventories/upload')}>
             Manage Categories
           </Button>
 
@@ -46,6 +52,8 @@ export const InventoriesPage: React.FC = () => {
           </Button>
         </div>
       </div>
+
+      <InventoriesList data={data} loading={isLoading} onSelectRows={onSelectRows} />
     </AppLayout>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import { useSearchParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { Button, Space, Input } from 'antd'
 import {
   ReloadOutlined,
@@ -9,57 +9,24 @@ import {
   SearchOutlined,
 } from '@ant-design/icons'
 
-import { ACCOUNTING_SERVICE } from '@services/index'
-import { IAccountReminder } from '@interfaces/models/account-reminder.interface'
-import {
-  AccountRemindersList,
-  AccountReminderForm,
-} from '@features/accountings'
+import { AccountRemindersList } from '@features/accountings'
 import { AppLayout } from '@components/layouts'
+import { ACCOUNTING_SERVICE } from '@services/index'
 
 export const AccountRemindersPage: React.FC = () => {
+  const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const [selectedRows, setSelectedRows] = React.useState<React.Key[]>([])
-  const [form, setForm] = React.useState<any>({
-    open: false,
-    type: 'add',
+
+  const { isLoading, data, refetch } = useQuery({
+    queryKey: ['account-reminders'],
+    queryFn: async () => await ACCOUNTING_SERVICE.getRemindersList({ type: 'all' }),
+    select: ({ data }) => data.data.filter((d: any) => d.type === searchParams.get('type')),
   })
-
-  const fetchAccountReminders = async () => {
-    return await ACCOUNTING_SERVICE.getRemindersList({
-      type: 'all',
-    })
-  }
-
-  const createAccountReminder = async (accountReminder: IAccountReminder) => {
-    return accountReminder
-  }
-
-  const deleteAccountReminder = async (reminderId: number) => {
-    return reminderId
-  }
 
   const onSelectRows = (rowIds: React.Key[]) => {
     setSelectedRows([...new Set(rowIds)])
   }
-
-  const executeActionOnSelectedRows = (actionType: string) => {
-    return actionType
-  }
-
-  const openForm = () => {
-    setForm({ ...form, open: true })
-  }
-
-  const closeForm = () => {
-    setForm({ ...form, open: false })
-  }
-
-  const { isLoading, data, refetch } = useQuery({
-    queryKey: ['account-reminders'],
-    queryFn: fetchAccountReminders,
-    select: ({ data }) => data.data,
-  })
 
   return (
     <AppLayout type="dashboard">
@@ -67,36 +34,25 @@ export const AccountRemindersPage: React.FC = () => {
         <div className="list-filters-panel">
           <Space direction="vertical">
             <Space direction="horizontal">
-              <Button onClick={() => refetch()} icon={<ReloadOutlined />} />
+              <Button onClick={() => null} icon={<ReloadOutlined />} />
               <Button icon={<CloudDownloadOutlined />}>Export</Button>
               <Button icon={<FilterOutlined />}>Filters</Button>
-              <Input
-                prefix={<SearchOutlined />}
-                placeholder="Search"
-                size="large"
-              />
+              <Input prefix={<SearchOutlined />} placeholder="Search" />
             </Space>
           </Space>
         </div>
         <div className="list-filters-panel">
-          <Button className="primary" onClick={openForm}>
+          <Button
+            className="primary"
+            onClick={() =>
+              navigate('/dashboard/accountings/account-reminders/create-account-reminder')
+            }>
             Create Reminder
           </Button>
         </div>
       </div>
 
-      <AccountRemindersList
-        data={data}
-        loading={isLoading}
-        onSelectRows={onSelectRows}
-      />
-
-      <AccountReminderForm
-        isOpen={form.open}
-        type={form.type}
-        onCancel={closeForm}
-        onSubmit={createAccountReminder}
-      />
+      <AccountRemindersList data={data} loading={isLoading} onSelectRows={onSelectRows} />
     </AppLayout>
   )
 }
