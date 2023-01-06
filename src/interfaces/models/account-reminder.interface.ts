@@ -4,6 +4,7 @@ export interface IAccountReminder {
   title: string
   remarks: string
   amount: number
+  reminder_type: string | string[]
   reminder_date: Date
   created_at?: Date
   updated_at?: Date

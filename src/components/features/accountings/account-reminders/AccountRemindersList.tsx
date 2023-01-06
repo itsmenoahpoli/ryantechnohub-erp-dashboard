@@ -1,6 +1,6 @@
 import React from 'react'
 import { Table, Button, Tag, Space } from 'antd'
-import { DeleteOutlined } from '@ant-design/icons'
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 
 import type { IBaseTableProps } from '@interfaces/components/table.interface'
 import type { IAccountReminder } from '@interfaces/models/account-reminder.interface'
@@ -80,9 +80,9 @@ export const AccountRemindersList: React.FC<IBaseTableProps<IAccountReminder[]>>
       },
       {
         title: 'Reminder Type',
-        dataIndex: 'id',
-        key: 'id',
-        render: (text: string) => 'Daily/Weekly/Yearly',
+        dataIndex: 'reminder_type',
+        key: 'reminder_type',
+        render: (text: string) => text || 'N/A',
       },
       {
         title: 'Reminder Date',
@@ -107,7 +107,17 @@ export const AccountRemindersList: React.FC<IBaseTableProps<IAccountReminder[]>>
         dataIndex: 'id',
         key: 'id',
         align: 'right',
-        render: (item: string) => <Button>...</Button>,
+        render: (text: string) => (
+          <Space direction="horizontal">
+            <Button
+              icon={<EditOutlined />}
+              onClick={() => props.onUpdateRow?.(Number(text))}></Button>
+            <Button
+              icon={<DeleteOutlined />}
+              onClick={() => props.onDeleteRow?.(Number(text))}
+              danger></Button>
+          </Space>
+        ),
       },
     ]
 

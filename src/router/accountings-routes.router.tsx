@@ -9,11 +9,11 @@ const ACCOUNTINGS_ROUTES = [
     element: <AccountRemindersPage />,
   },
   {
-    path: '/dashboard/accountings/account-reminders/create-account-reminder',
+    path: '/dashboard/accountings/account-reminders/create',
     element: <AccountReminderFormPage type="create" />,
   },
   {
-    path: '/dashboard/accountings/account-reminders/update-account-reminder',
+    path: '/dashboard/accountings/account-reminders/:accountReminderId/update',
     element: <AccountReminderFormPage type="update" />,
   },
 ]

@@ -1,4 +1,10 @@
 .ant-modal {
+  &-wrap.confirm-dialog {
+    .ant-modal-content {
+      padding: 15px 10px !important;
+    }
+  }
+
   &-content {
     padding: 5px 0 !important;
   }
@@ -8,21 +14,21 @@
       &-header {
         padding: 0 20px;
         margin: 15px 0;
-        border-bottom: solid 1px #EEEEEE;
-  
+        border-bottom: solid 1px #eeeeee;
+
         &-title {
           font-size: 16px !important;
           font-weight: bold !important;
           margin-bottom: 0;
         }
-  
+
         &-subtitle {
           color: #898989 !important;
           font-size: 13px !important;
           margin-bottom: 15px;
         }
       }
-  
+
       &-content {
         min-height: 80px;
         padding: 5px 20px !important;

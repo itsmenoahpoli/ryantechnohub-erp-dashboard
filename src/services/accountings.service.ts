@@ -34,14 +34,27 @@ export default class AccountingsService implements IAccountingsService {
     return response
   }
 
-  async updateReminder(
-    reminderId: number,
-    reminder: IAccountReminder,
-  ): Promise<any> {
+  async getReminder(reminderId: number): Promise<any> {
+    const response: IHttpResponse<IAccountReminder> = await $axios.get(
+      API_URLS.accountReminders + '/' + reminderId,
+    )
+
+    return response
+  }
+
+  async updateReminder(reminderId: number, reminder: IAccountReminder): Promise<any> {
     const response: IHttpResponse<IAccountReminder> = await $axios.patch(
       API_URLS.accountReminders + '/' + reminderId,
       reminder,
     )
+
+    if (response.status === 200) {
+      notification.success({
+        duration: 5,
+        message: 'Updated',
+        description: 'Account reminder updated successfully',
+      })
+    }
 
     return response
   }
@@ -51,13 +64,18 @@ export default class AccountingsService implements IAccountingsService {
       API_URLS.accountReminders + '/' + reminderId,
     )
 
+    if (response.status === 204) {
+      notification.success({
+        duration: 5,
+        message: 'Deleted',
+        description: `Account reminder (RMND-${reminderId}) deleted/removed successfully`,
+      })
+    }
+
     return response
   }
 
-  async batchActionOnReminders(
-    reminderIds: number[],
-    actionType: string,
-  ): Promise<unknown> {
+  async batchActionOnReminders(reminderIds: number[], actionType: string): Promise<unknown> {
     const response: IHttpResponse<IAccountReminder[]> = await $axios.post(
       API_URLS.accountReminders + '/batch-action',
       {

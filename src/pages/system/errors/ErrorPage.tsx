@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate, useRouteError } from 'react-router-dom'
-import { Result, Button } from 'antd'
+import { Result, Button, Space } from 'antd'
 
 import { AppLayout } from '@components/layouts'
 
@@ -25,12 +25,14 @@ export const ErrorPage: React.FC = () => {
         extra={
           <>
             <h2 className="text-center mb-5">Error {error.status}</h2>
-            <Button
-              type="primary"
-              key="console"
-              onClick={() => navigate('/dashboard')}>
-              Go back to dashboard
-            </Button>
+            <Space direction="horizontal">
+              <Button type="primary" key="console" onClick={() => navigate(-1)}>
+                Go back to previous page
+              </Button>
+              <Button type="primary" key="console" onClick={() => navigate('/dashboard')}>
+                Go back to dashboard
+              </Button>
+            </Space>
           </>
         }
       />

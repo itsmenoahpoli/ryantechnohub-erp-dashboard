@@ -1,6 +1,6 @@
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
 import { notification } from 'antd'
-import { getEnv } from "@config/env.config"
+import { getEnv } from '@config/env.config'
 import { storage } from '@utils/index'
 
 const onRequest = (request: AxiosRequestConfig): AxiosRequestConfig => {
@@ -20,7 +20,7 @@ const onRequestError = (error: AxiosError): Promise<AxiosError> => {
   notification.error({
     duration: 5,
     message: 'Request Error',
-    description: 'Failed to send request to server'
+    description: 'Failed to send request to server',
   })
 
   return Promise.reject(error)
@@ -32,12 +32,15 @@ const onResponse = (response: AxiosResponse): AxiosResponse => {
 
 const onResponseError = (error: AxiosError): Promise<AxiosError> => {
   if (error.code === 'ERR_NETWORK') {
-    notification.error({ duration: 5, message: 'Network Error', description: 'Failed to connect to server' })
+    notification.error({
+      duration: 5,
+      message: 'Network Error',
+      description: 'SERVER ERROR OCCURED',
+    })
   }
 
   return Promise.reject(error)
 }
-
 
 export const setupAxiosInstance = (instance: AxiosInstance): AxiosInstance => {
   instance.interceptors.request.use(onRequest, onRequestError)

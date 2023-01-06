@@ -72,10 +72,10 @@ export const InventoriesList: React.FC<IBaseTableProps<IInventoryProduct[]>> = (
       render: (text: string) => text,
     },
     {
-      title: 'Model',
-      dataIndex: 'model',
-      key: 'model',
-      render: (text: string) => text,
+      title: 'Tracked Stocks',
+      dataIndex: 'is_tracked_stocks',
+      key: 'is_tracked_stocks',
+      render: (text: string) => (Boolean(text) ? 'Tracked' : 'Untracked'),
     },
     {
       title: 'Date Created',

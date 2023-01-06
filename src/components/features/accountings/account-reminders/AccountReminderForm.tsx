@@ -2,38 +2,41 @@ import React from 'react'
 import { Form, Input, Select, Checkbox, DatePicker, Button, Space } from 'antd'
 
 import type { IAccountReminder } from '@interfaces/models/account-reminder.interface'
+import { capitalize } from '@utils/index'
 
 interface IAccountReminderFormProps {
   onSubmit: (accountReminder: IAccountReminder) => void
   type: 'create' | 'update'
+  formData?: IAccountReminder | unknown
+  formLoading?: boolean
 }
 
-const typeOptions = [
-  {
-    label: 'Monthly Expenses',
-    value: 'monthly-expenses',
-  },
-  {
-    label: 'Receivables',
-    value: 'receivables',
-  },
-  {
-    label: 'Payables',
-    value: 'payables',
-  },
-]
+export const AccountReminderForm: React.FC<IAccountReminderFormProps> = (props) => {
+  const typeOptions = [
+    {
+      label: 'Monthly Expenses',
+      value: 'monthly-expenses',
+    },
+    {
+      label: 'Receivables',
+      value: 'receivables',
+    },
+    {
+      label: 'Payables',
+      value: 'payables',
+    },
+  ]
 
-const initialValues = {
-  type: '',
-  title: '',
-  amount: '',
-  reminder_date: '',
-  remarks: '',
-}
+  const reminderByOptions = ['Daily', 'Weekly', 'Monthly', 'Yearly']
 
-export const AccountReminderForm: React.FC<IAccountReminderFormProps> = (
-  props,
-) => {
+  const initialValues = {
+    type: '',
+    title: '',
+    amount: '',
+    reminder_date: '',
+    remarks: '',
+  }
+
   return (
     <Form
       layout="horizontal"
@@ -49,6 +52,7 @@ export const AccountReminderForm: React.FC<IAccountReminderFormProps> = (
         label="Type"
         name="type"
         rules={[{ required: true, message: 'Type is required' }]}
+        hasFeedback
         required>
         <Select options={typeOptions} />
       </Form.Item>
@@ -56,6 +60,7 @@ export const AccountReminderForm: React.FC<IAccountReminderFormProps> = (
         label="Title"
         name="title"
         rules={[{ required: true, message: 'Title is required' }]}
+        hasFeedback
         required>
         <Input />
       </Form.Item>
@@ -63,6 +68,7 @@ export const AccountReminderForm: React.FC<IAccountReminderFormProps> = (
         label="Amount"
         name="amount"
         rules={[{ required: true, message: 'Amount is required' }]}
+        hasFeedback
         required>
         <Input />
       </Form.Item>
@@ -70,16 +76,12 @@ export const AccountReminderForm: React.FC<IAccountReminderFormProps> = (
         label="Reminder Date/Due"
         name="reminder_date"
         rules={[{ required: true, message: 'Reminder Date is required' }]}
+        hasFeedback
         required>
         <DatePicker inputReadOnly />
       </Form.Item>
-      <Form.Item label="Reminder By" name="reminder_by">
-        <Space direction="horizontal">
-          <Checkbox>Daily</Checkbox>
-          <Checkbox>Weekly</Checkbox>
-          <Checkbox>Monthly</Checkbox>
-          <Checkbox>Yearly</Checkbox>
-        </Space>
+      <Form.Item label="Reminder Type" name="reminder_type">
+        <Checkbox.Group options={reminderByOptions} />
       </Form.Item>
       <Form.Item label="Remarks (Optional)" name="remarks">
         <Input.TextArea rows={4} />
@@ -87,8 +89,8 @@ export const AccountReminderForm: React.FC<IAccountReminderFormProps> = (
 
       <div className="d-flex justify-center mt-3">
         <Space direction="horizontal">
-          <Button htmlType="submit" type="default">
-            Create Reminder
+          <Button htmlType="submit" type="default" loading={props.formLoading}>
+            {capitalize(props.type)} Reminder
           </Button>
           <Button htmlType="reset" danger>
             Clear Form

@@ -1,4 +1,5 @@
 import React from 'react'
+// import { useParams } from 'react-router-dom'
 
 import { ACCOUNTING_SERVICE } from '@services/index'
 import { IAccountReminder } from '@interfaces/models/account-reminder.interface'
@@ -10,8 +11,14 @@ interface IProps {
 }
 
 export const AccountReminderFormPage: React.FC<IProps> = (props) => {
+  // const { accountReminderId } = useParams()
+  const [formLoading, setFormLoading] = React.useState<boolean>(false)
+
   const createAccountReminder = async (accountReminder: IAccountReminder) => {
-    return await ACCOUNTING_SERVICE.createReminder(accountReminder)
+    setFormLoading(true)
+    return await ACCOUNTING_SERVICE.createReminder(accountReminder).finally(() =>
+      setFormLoading(false),
+    )
   }
 
   return (
@@ -20,6 +27,7 @@ export const AccountReminderFormPage: React.FC<IProps> = (props) => {
         <AccountReminderForm
           onSubmit={createAccountReminder}
           type={props.type}
+          formLoading={formLoading}
         />
       </div>
     </AppLayout>
