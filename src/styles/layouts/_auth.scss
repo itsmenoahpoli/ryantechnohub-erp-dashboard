@@ -10,8 +10,8 @@
     position: fixed;
     top: 0;
     width: 100vw;
-    background-color: #FFFFFF !important;
-    border-bottom: solid 1px #EEEEEE;
+    background-color: #ffffff !important;
+    border-bottom: solid 1px #eeeeee;
     height: 60px !important;
     line-height: 55px !important;
     align-items: center !important;
@@ -23,7 +23,7 @@
     }
 
     p {
-      color: #17415F;
+      color: #17415f;
     }
 
     img,
@@ -47,7 +47,7 @@
     }
 
     a {
-      color: #0D2153;
+      color: #0d2153;
       font-size: 13px;
       text-decoration: underline;
     }
@@ -58,42 +58,34 @@
 
       .title {
         color: #233a5e;
+        font-size: 20px;
       }
 
       .btn-extra {
         height: 40px;
         color: #234267;
-        background-color: #E0E4E8;
+        background-color: #e0e4e8;
         font-weight: 700;
         font-size: 13px;
       }
 
-      button[type="submit"] {
-        background-color: #28258F !important;
+      button[type='submit'] {
+        width: 100%;
+        background-color: #28258f !important;
       }
 
       .ant-form {
         &-item-label {
           label {
-            font-size: 13px;
-            color: #565656;
+            font-size: 15px !important;
+            color: #242424;
           }
         }
 
         &-item-control-input {
-          height: 40px;
-
-          &-content {
-            input {
-              background-color: #FAFBFB;
-              font-size: 13px;
-              height: 40px;
-            }
-
-            .ant-input-affix-wrapper {
-              background-color: #FAFBFB;
-              padding: 0 11px;
-            }
+          .ant-input {
+            font-size: 14px;
+            padding-left: 10px;
           }
         }
 

@@ -3,7 +3,7 @@ import { Button, Divider } from 'antd'
 
 import { AUTH_SERVICE } from '@services/index'
 import { AppLayout } from '@components/layouts'
-// import { LoginForm } from '@features/auth/LoginForm'
+import { LoginForm } from '@features/auth'
 
 export const LoginPage: React.FC = () => {
   const [loading, setLoading] = React.useState<boolean>(false)
@@ -18,7 +18,7 @@ export const LoginPage: React.FC = () => {
     <AppLayout type="auth">
       <h3 className="fw-bold text-center title mb-3">Dashboard Log in</h3>
 
-      {/* <LoginForm loading={loading} onFormSubmit={onFormSubmit} /> */}
+      <LoginForm loading={loading} onFormSubmit={onFormSubmit} />
 
       <Divider type="horizontal">
         <small>OR</small>

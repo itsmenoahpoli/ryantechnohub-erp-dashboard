@@ -7,11 +7,12 @@ import { capitalize } from '@utils/index'
 interface IAccountReminderFormProps {
   onSubmit: (accountReminder: IAccountReminder) => void
   type: 'create' | 'update'
+  initialValues: any
   formData?: IAccountReminder | unknown
   formLoading?: boolean
 }
 
-export const AccountReminderForm: React.FC<IAccountReminderFormProps> = (props) => {
+export const AccountReminderForm: React.FC<IAccountReminderFormProps> = React.memo((props) => {
   const typeOptions = [
     {
       label: 'Monthly Expenses',
@@ -29,18 +30,14 @@ export const AccountReminderForm: React.FC<IAccountReminderFormProps> = (props) 
 
   const reminderByOptions = ['Daily', 'Weekly', 'Monthly', 'Yearly']
 
-  const initialValues = {
-    type: '',
-    title: '',
-    amount: '',
-    reminder_date: '',
-    remarks: '',
-  }
+  React.useEffect(() => {
+    console.log(props.type)
+  }, [])
 
   return (
     <Form
       layout="horizontal"
-      initialValues={initialValues}
+      initialValues={props.initialValues}
       onFinish={props.onSubmit}
       colon={false}
       labelCol={{ span: 4 }}
@@ -99,4 +96,4 @@ export const AccountReminderForm: React.FC<IAccountReminderFormProps> = (props) 
       </div>
     </Form>
   )
-}
+})

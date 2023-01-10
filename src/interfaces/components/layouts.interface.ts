@@ -18,3 +18,7 @@ export interface IDashboardLayoutProps {
 export interface IErrorLayoutProps {
   children: React.ReactNode
 }
+
+export interface ISidebarProps {
+  user: any
+}

@@ -3,7 +3,7 @@ import { Layout, Card } from 'antd'
 
 import type { IDashboardLayoutProps } from '@interfaces/components/layouts.interface'
 import { DEFAULT_META } from '@config/meta.config'
-import { getRouteLabel } from '@utils/index'
+import { getRouteLabel, storage } from '@utils/index'
 import { Header, Sidebar } from '@components/layouts/navigations'
 
 const { Sider, Content } = Layout
@@ -16,11 +16,8 @@ export const DashboardLayout: React.FC<IDashboardLayoutProps> = (props) => {
   return (
     <React.Fragment>
       <Layout className="wrapper-dashboard" hasSider>
-        <Sider
-          className="wrapper-dashboard-sidebar"
-          breakpoint="md"
-          width={270}>
-          <Sidebar />
+        <Sider className="wrapper-dashboard-sidebar" breakpoint="md" width={270}>
+          <Sidebar user={storage.get('user')} />
         </Sider>
 
         <Layout className="wrapper-dashboard-main animate__animated animate__faster animate__fadeIn">
@@ -29,9 +26,7 @@ export const DashboardLayout: React.FC<IDashboardLayoutProps> = (props) => {
               <Header />
               <h1 className="page-name fw-bold">{getRouteLabel()}</h1>
             </div>
-            <Card
-              className="page-content-container"
-              style={{ width: props.width ?? '98%' }}>
+            <Card className="page-content-container" style={{ width: props.width ?? '98%' }}>
               {props.children}
             </Card>
           </Content>

@@ -5,6 +5,7 @@ import { createQs } from '@utils/index'
 import type { IAccountingsService } from '@interfaces/services/accountings-service.interface'
 import type { IAccountReminder } from '@interfaces/models/account-reminder.interface'
 import type { IHttpResponse } from '@interfaces/http-response.interface'
+import * as ACCOUNTING_STORE from '@store/accountings'
 
 export default class AccountingsService implements IAccountingsService {
   constructor() {}
@@ -13,6 +14,8 @@ export default class AccountingsService implements IAccountingsService {
     const response: IHttpResponse<IAccountReminder[]> = await $axios.get(
       API_URLS.accountReminders + createQs(params),
     )
+
+    ACCOUNTING_STORE.setState({ accountReminders: response.data.data })
 
     return response
   }
